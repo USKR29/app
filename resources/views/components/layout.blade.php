@@ -6,8 +6,8 @@
     <title>App</title>
     @vite('resources/css/app.css')
 </head>
-<header class="flex justify-between items-center">
-    <div class="text-3xl text-slate-400">App.</div>
+<header class="flex justify-between items-center mb-10 py-5 border-b-1 border-slate-300">
+    <div class="text-3xl text-slate-400"><a href="{{route('all')}}">App.</a></div>
     @auth
         <div class="flex gap-2">
         <span class=" text-slate-800 font-bold">Hi,{{Auth::user()->name}}</span>

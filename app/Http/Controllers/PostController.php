@@ -12,7 +12,7 @@ class PostController extends Controller
     //
     public function allposts(){
 
-        $posts = Post::all();
+        $posts = Post::with('user')->get();
 
         return view('welcome',compact('posts'));
     }
@@ -44,5 +44,20 @@ class PostController extends Controller
         ]);
 
             return redirect()->route('all')->with('success','Post added successfully');
+    }
+
+    public function singlepost($id){
+
+        $post = Post::with('user')->find($id);
+
+        return view('single',compact('post'));
+    }
+
+    public function deletepost(Post $post){
+
+        $post->delete();
+
+        return redirect()->route('all');
+
     }
 }
